@@ -7,7 +7,7 @@ function App() {
   return (
     <div className='outer-pokedex'>
     <h1 className="pokedex-heading">
-      <Link to={'/'}>Pokedex</Link>
+      <Link to={'/pokemon/'}>Pokedex</Link>
     </h1>
     <CostomeRoutes/>
     </div>

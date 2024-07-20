@@ -5,7 +5,7 @@ function CostomeRoutes(){
     return(
         <div>
            <Routes>
-                    <Route path='/' element={<Pokedex />} />
+                    <Route path='/pokemon/' element={<Pokedex />} />
                     <Route path='/pokemon/:id' element={<PokemonDetails/>} />
            </Routes>
         </div>
