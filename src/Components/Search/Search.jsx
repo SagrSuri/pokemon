@@ -8,7 +8,13 @@ function Search({ updateSearchTerm }) {
     const [isRequired, setIsRequired] = useState(false);
 
     // Debounced function to update search term
-    const debouncedCallback = useDebounce((value) => updateSearchTerm(value), 2000);
+    const debouncedCallback = useDebounce((value) => {
+        try {
+            updateSearchTerm(value);
+        } catch (error) {
+            console.error('Error in updateSearchTerm:', error);
+        }
+    }, 2000);
 
     // Handle input change
     const handleChange = (e) => {
@@ -31,6 +37,7 @@ function Search({ updateSearchTerm }) {
 
     // Trigger search if search was triggered
     if (searchTriggered) {
+        console.log('Input Value:', inputValue); // Log the input value
         debouncedCallback(inputValue);
         setSearchTriggered(false); // Reset search trigger
     }

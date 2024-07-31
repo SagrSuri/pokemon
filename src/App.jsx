@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="outer-pokedex">
       <h1 id="pokedex-heading">
-        <Link to="/">Pokedex</Link>
+        <Link to="/pokemon/">Pokedex</Link>
       </h1>
       <Favicon pokemonName={pokemonName} /> {/* Use the Favicon component */}
       <CustomRoutes />
