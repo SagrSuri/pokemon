@@ -6,7 +6,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 1rem;
+    
 }
 .pokemon-image{
     height: 150px;
@@ -14,17 +17,24 @@
     transition: 0.1s;
     padding: 10px;
     border-radius: 10px;
+    transition: 0.3s;
 }
 .pokemon-image:hover{
-    background-color: #f5dbba;
-    /* padding: 10px; */
-    /* border-radius: 10px; */
+    transform: rotate(-2deg);
+}
+.pokemon:hover{
+    background-color: #e6e6e6;
 }
 
 .pokemon-name{
-    /* font-size: 14px;
-    font-weight: 600; */
     font-family: 'Poppins' , 'Times New Roman', Times, serif, Arial, Helvetica, sans-serif;
     text-align: center;
     text-transform: capitalize;
+    letter-spacing: 5px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+.pokemon-name:hover{
+    /* transform: rotate(2deg); */
+    transform: scale(1.1);
 }

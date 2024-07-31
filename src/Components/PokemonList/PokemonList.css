@@ -11,7 +11,21 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 5px;
 }
+/* Small Devices (Tablets) */
+@media (max-width: 576px){
+    /* Styles for tablets */
+    .pokemon-wrapper{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+  }
 
 .controls{
     display: flex;

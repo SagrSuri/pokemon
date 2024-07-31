@@ -1,46 +1,58 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import "./PokemonDetails.css";
+// PokemonDetails.jsx
+
+import { Link, useParams } from "react-router-dom";
+import './PokemonDetails.css';
+import usePokemonDetails from "../../hooks/usePokemonDetails";
+import Favicon from '../Favicon/Favicon'; // Adjust the path as needed
+import { Helmet } from "react-helmet";
 
 function PokemonDetails() {
-  const { id } = useParams();
-  const [pokemon, setPokemon] = useState({});
+    const { id, name } = useParams();
+    const [pokemon, loading] = usePokemonDetails(id);
 
-  async function downloadPokemon() {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_POKEDEX_URL}/${id}`); // Use environment variable
-      setPokemon({
-        name: response.data.name,
-        image: response.data.sprites.other.dream_world.front_default,
-        weight: response.data.weight,
-        height: response.data.height,
-        types: response.data.types.map((t) => t.type.name),
-      });
-    } catch (error) {
-      console.error("Error fetching pokemon details: ", error);
+    if (loading) {
+        return <div className="loading">Loading...</div>; // Handle loading state
     }
-  }
 
-  useEffect(() => {
-    downloadPokemon();
-  }, []);
+    if (!pokemon) {
+        return <div>No Pokémon data available</div>; // Handle no data state
+    }
 
-  return (
-    <div className="pokemon-details-wrapper">
-      <img className="pokemon-image" src={pokemon.image} alt={pokemon.name} />
-      <div className="pokemon-name">{pokemon.name}</div>
-      <div className="pokemon-name">
-        <span>height:</span> {pokemon.height}
-      </div>
-      <div className="pokemon-name">
-        <span>weight:</span> {pokemon.weight}
-      </div>
-      <div className="pokemon-details-types">
-        {pokemon.types && pokemon.types.map((t) => <div key={t}>{t}</div>)}
-      </div>
-    </div>
-  );
+    const uppercaseName = pokemon.name.toUpperCase();
+    return (
+        <div className="pokemon-details-wrapper">
+            <Favicon pokemonName={pokemon.name} /> {/* Update favicon here */}
+            <Helmet>
+                <title>{uppercaseName} | {`${pokemon.id}`}</title>
+            </Helmet>
+            <img className="pokemon-details-image" src={pokemon.image} alt={pokemon.name} />
+
+            <div className="pokemon-details-name">
+                <span>{pokemon.name}</span>
+                <Link to={`/pokemon/${pokemon.id}/${pokemon.name}`}><span id="idpokemon">[{pokemon.id}]</span></Link>
+                
+            </div>
+            <div className="pokemon-details-name">Height: {pokemon.height}</div>
+            <div className="pokemon-details-name">Weight: {pokemon.weight}</div>
+            <div className="pokemon-details-types">
+                {pokemon.types && pokemon.types.map((t) => <div key={t}> {t} </div>)}
+            </div>
+
+            {
+                pokemon.types && pokemon.similarPokemons &&
+                <div className="pokemon-types">
+                    <p className="">more <span className="type-pokemon">{pokemon.types[0]}</span> type pokemons</p>
+                    <ul className="pokemon-type-list">
+                        {pokemon.similarPokemons.map((p) => (
+                            <li key={p.pokemon.url}>
+                                <Link to={`/pokemon/${p.pokemon.url.split('/').slice(-2, -1)[0]}/${p.pokemon.name}`}>{p.pokemon.name}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            }
+        </div>
+    );
 }
 
 export default PokemonDetails;

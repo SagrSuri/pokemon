@@ -1,35 +1,90 @@
-.pokemon-name{
-    font-size: 20px;
+.pokemon-details-name {
+    font-size: xx-large;
+    color: black;
     margin-top: 1rem;
-    letter-spacing: 5px;
 }
 
-.pokemon-name > span{
-    letter-spacing: 1px;
+.pokemon-details-name > span {
+    letter-spacing: 0.5rem;
+    font-family: Poppins;
+    font-weight: 700;
 }
 
-.pokemon-details-types{
+.pokemon-details-types {
     display: flex;
     margin-top: 2rem;
     gap: 3rem;
-    font-size: 20px;
-}
-.pokemon-details-types >div{
-    border: 1px solid #c1c0c0;
-    border-radius: 5px;
-    padding: 5px 15px;
-    background-color: #c1c0c0;
-}
-.pokemon-image{
-    margin-top: 1rem;
-    max-height: 200px;
-}
-.pokemon-image:hover{
-   background-color: transparent;
+    font-size: larger;
 }
 
-.pokemon-details-wrapper{
+.pokemon-details-types div {
+    border-radius: 2rem;
+    padding: 5px 25px;
+    font-size: 1.5rem;
+    background-color: #07d1ca;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.pokemon-details-image {
+    margin-top: 3rem;
+    max-height: 200px;
+}
+
+.pokemon-details-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.pokemon-types{
+    margin-top: 2rem;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+.pokemon-type-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    text-transform: uppercase;
+    font-family: Poppins;
+}
+
+.pokemon-type-list > li{
+    list-style: none;
+}
+.pokemon-types{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.pokemon-types > p{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: Poppins;
+    font-weight: 700;
+}
+.type-pokemon{
+    color: #0d7b78;
+}
+
+.pokemon-details-id{
+    font-weight: normal;
+}
+#idpokemon{
+    font-weight: normal;
+    letter-spacing: normal;
+    font-size: medium;
+}
+
+.loading{
+    margin-top: 3rem;
+    font-family: Poppins;
+    font-size: 3rem;
+    color: #009c4c;
+    font-weight: bolder;
 }
