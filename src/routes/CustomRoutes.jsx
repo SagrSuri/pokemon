@@ -10,6 +10,7 @@ function CustomRoutes() {
             <Route path="/pokemon/" element={<Pokedex />} />
             <Route path="/pokemon/:id/:name" element={<PokemonDetails />} /> {/* Route to capture both ID and name */}
         </Routes>
+        
     );
 }
 
