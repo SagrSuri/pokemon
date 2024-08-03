@@ -16,8 +16,11 @@
   background: #9cf01e;
 }
 
+a:hover{
+  color: #157028;
+}
 a:visited {
-  color: black;
+  color: #14006e;
 }
 a{
   text-decoration: none;
