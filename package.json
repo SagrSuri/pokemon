@@ -2,7 +2,7 @@
   "homepage": "https://sagrsuri.github.io/pokemon",
   "name": "pokemon",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
@@ -11,6 +11,10 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/SagrSuri/pokemon"
   },
   "dependencies": {
     "axios": "^1.4.0",
