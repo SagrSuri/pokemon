@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // usePokemonDetails.js
 
 import axios from "axios";

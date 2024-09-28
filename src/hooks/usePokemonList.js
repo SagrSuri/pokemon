@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -19,8 +20,8 @@ function usePokemonList() {
             const pokemonResults = response.data.results;  // we get the array of pokemons from result
 
             setPokemonListState((state) => ({
-                ...state, 
-                nextUrl: response.data.next, 
+                ...state,
+                nextUrl: response.data.next,
                 prevUrl: response.data.previous
             }));
             const pokemonResultPromise = pokemonResults.map((pokemon) => axios.get(pokemon.url));
@@ -34,14 +35,14 @@ function usePokemonList() {
                 const pokemon = pokeData.data;
                 return {
                     id: pokemon.id,
-                    name: pokemon.name, 
-                    image: (pokemon.sprites.other) ? pokemon.sprites.other.dream_world.front_default : pokemon.sprites.front_shiny, 
+                    name: pokemon.name,
+                    image: (pokemon.sprites.other) ? pokemon.sprites.other.dream_world.front_default : pokemon.sprites.front_shiny,
                     types: pokemon.types
                 }
             });
             setPokemonListState((state) => ({
                 ...state,
-                pokemonList: pokeListResult, 
+                pokemonList: pokeListResult,
                 isLoading: false
             }));
     }
